@@ -8,12 +8,27 @@
 
 import UIKit
 
+import AVFoundation
+
 class ViewController: UIViewController {
+    
+    
+    // MARK: Properties
     @IBOutlet weak var messageLabel: UILabel!
     
     @IBOutlet weak var messageButton: UIButton!
    
+    @IBOutlet weak var awesomeImage: UIImageView!
+    
+    @IBOutlet weak var soundSwitch: UISwitch!
+    
+    var awesomePlayer = AVAudioPlayer()
+  
     var lastIndex = -1
+    var lastImage = -1
+    var lastSound = -1
+    let numOfImages = 5
+    let numOfSounds = 3
     
 
     override func viewDidLoad() {
@@ -26,6 +41,40 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func playSound(soundName: String) {
+        var soundName = "sound0" + String(arc4random_uniform(UInt32(numOfSounds)))
+       
+        if let sound = NSDataAsset(name: soundName) {
+            do {
+                try awesomePlayer = AVAudioPlayer(data: sound.data)
+                    awesomePlayer.play()
+            } catch {
+                print("Error: Data from \(soundName) could not be played as an audio file")
+            }
+        } else {
+            print("Error: Could not load data from file \(soundName)")
+        }
+    }
+    func nonRepeatRandom(last: inout Int, range: Int) -> Int {
+        var random: Int = Int(arc4random_uniform(UInt32(range)))
+        
+        while random == last {
+            random = Int(arc4random_uniform(UInt32(range)))
+        }
+        last = random
+            
+            return random
+        
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func soundSwitchPressed(_ sender: UISwitch) {
+        if soundSwitch.isOn == false {
+            awesomePlayer.stop()
+        }
+    }
+    
     @IBAction func messageButtonPressed(_ sender: UIButton) {
         
         let messages = ["You Are Fantastic!",
@@ -34,17 +83,26 @@ class ViewController: UIViewController {
                         "You Are Awesome!",
                         "when the Genius Bar needs help, they call you!",
                         "You Brighten My Day!"]
-        
-        var randomIndex : Int = Int(arc4random_uniform(UInt32(messages.count)))
-       
-        while randomIndex == lastIndex {
-            print("Before condition: my new randomIndex is \(randomIndex) and lastIndex is \(lastIndex)")
-        randomIndex = Int(arc4random_uniform(UInt32(messages.count)))
-            print("After condition: my new randomIndex is \(randomIndex) and lastIndex is \(lastIndex)")
-        }
-         messageLabel.text = messages[randomIndex]
 
-        lastIndex = randomIndex
+        
+            var random: Int
+            
+        random = nonRepeatRandom(last: &lastIndex, range: messages.count)
+        messageLabel.text = messages[random]
+            
+    
+        awesomeImage.isHidden = false
+        random = nonRepeatRandom(last: &lastImage, range: numOfImages)
+        awesomeImage.image = UIImage(named : "image" + String (random))
+        
+        random = nonRepeatRandom(last: &lastSound, range: numOfSounds)
+        playSound(soundName: "sound" + String(random))
+        
+        if soundSwitch.isOn == true {
+            random = nonRepeatRandom(last: &lastSound, range: numOfSounds)
+            playSound(soundName: "sound" + String(random))
+        }
+        
 /*
         messageLabel.text = messages[index]
         

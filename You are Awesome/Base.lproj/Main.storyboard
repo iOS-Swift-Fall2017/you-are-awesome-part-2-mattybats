@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,36 +15,73 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="You_are_Awesome" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CVi-bO-iaK">
-                                <rect key="frame" x="115" y="103" width="144" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVf-Mj-VS9">
+                                <rect key="frame" x="20" y="27" width="374" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="LaI-Mc-sLh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="1" green="0.19215637283975595" blue="0.15379090403147067" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="images0" translatesAutoresizingMaskIntoConstraints="NO" id="vGX-mr-j4M">
+                                <rect key="frame" x="20.5" y="159" width="373" height="257"/>
+                            </imageView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XBl-o0-lH9">
+                                <rect key="frame" x="110" y="102" width="51" height="31"/>
+                                <connections>
+                                    <action selector="soundSwitchPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="PAq-Zn-Rva"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIa-ew-uFE">
+                                <rect key="frame" x="20" y="108" width="86" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CVi-bO-iaK">
+                                <rect key="frame" x="192" y="102" width="179" height="30"/>
                                 <state key="normal" title="Show Message"/>
                                 <connections>
                                     <action selector="messageButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r9x-1F-PpD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVf-Mj-VS9">
-                                <rect key="frame" x="16" y="27" width="343" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="1" green="0.19215637283975595" blue="0.15379090403147067" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="XBl-o0-lH9" firstAttribute="top" secondItem="wVf-Mj-VS9" secondAttribute="bottom" constant="32" id="2Ye-Dt-nzr"/>
+                            <constraint firstItem="CVi-bO-iaK" firstAttribute="leading" secondItem="XBl-o0-lH9" secondAttribute="trailing" constant="33" id="HsM-Us-pG6"/>
+                            <constraint firstItem="vGX-mr-j4M" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="19" id="NbO-zO-cfp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CVi-bO-iaK" secondAttribute="trailing" constant="43" id="O43-ys-0N2"/>
+                            <constraint firstItem="vGX-mr-j4M" firstAttribute="top" secondItem="VIa-ew-uFE" secondAttribute="bottom" constant="30" id="PNc-07-Vdz"/>
+                            <constraint firstItem="wVf-Mj-VS9" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="WHy-Xx-82F"/>
+                            <constraint firstItem="wVf-Mj-VS9" firstAttribute="leading" secondItem="VIa-ew-uFE" secondAttribute="leading" id="ack-w8-tqB"/>
+                            <constraint firstItem="wVf-Mj-VS9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="bEq-Yh-jom"/>
+                            <constraint firstItem="vGX-mr-j4M" firstAttribute="top" secondItem="XBl-o0-lH9" secondAttribute="bottom" constant="26" id="jZ9-6C-xSM"/>
+                            <constraint firstItem="wVf-Mj-VS9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="7" id="k84-5p-0oa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vGX-mr-j4M" secondAttribute="trailing" constant="-62" id="mbd-tT-CcY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vGX-mr-j4M" secondAttribute="bottom" constant="251" id="qio-AG-ENV"/>
+                            <constraint firstItem="XBl-o0-lH9" firstAttribute="leading" secondItem="VIa-ew-uFE" secondAttribute="trailing" constant="4" id="ruG-NG-Nyw"/>
+                            <constraint firstItem="XBl-o0-lH9" firstAttribute="top" secondItem="CVi-bO-iaK" secondAttribute="top" id="vzc-Rj-AAR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="awesomeImage" destination="vGX-mr-j4M" id="ezI-uc-hfI"/>
                         <outlet property="messageButton" destination="CVi-bO-iaK" id="a6O-P1-TFd"/>
                         <outlet property="messageLabel" destination="wVf-Mj-VS9" id="26j-g9-yrN"/>
+                        <outlet property="soundSwitch" destination="XBl-o0-lH9" id="3pI-MG-CtP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="77.599999999999994" y="33.733133433283363"/>
+            <point key="canvasLocation" x="76.875" y="32.74647887323944"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="images0" width="300" height="168"/>
+    </resources>
 </document>
